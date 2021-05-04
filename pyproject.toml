@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "fastapi-dev"
+version = "0.9.0-dev0"
+description = ""
+authors = ["OmniVector Solutions <info@omnivector.solutions>"]
+license = "MIT"
+
+packages = [
+    { include = "fastapi_dev", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+fastapi = ""
+fastapi-utils = ""
+httpx = { version = "0.17.1", optional = true }
+pydantic = {version = "1.8.1", extras = ["dotenv"] }
+
+pytest = { version = "", optional = true }
+pytest-asyncio = { version = "", optional = true }
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
