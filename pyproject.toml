@@ -13,12 +13,26 @@ packages = [
 python = ">=3.8,<4.0"
 fastapi = ""
 fastapi-utils = ""
-httpx = { version = "0.17.1", optional = true }
-pydantic = {version = "1.8.1", extras = ["dotenv"] }
+httpx = "0.17.1" 
+pydantic = "1.8.1"
 
 pytest = { version = "", optional = true }
 pytest-asyncio = { version = "", optional = true }
+uvicorn = { version = "", optional = true }
+flake8 = { version = "", optional = true }
 
+[tool.poetry.extras]
+dev = [
+    "pytest",
+    "uvicorn",
+    "flake8",
+    "pytest-asyncio",
+]
+testing = [
+    "pytest",
+    "flake8",
+    "pytest-asyncio",
+]
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
