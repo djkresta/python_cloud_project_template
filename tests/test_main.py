@@ -1,9 +1,11 @@
 import pytest
 from httpx import AsyncClient
+import os
 
 from fastapi_dev.main import app, get_hostname
 URL = "http://httpbin.org/uuid"
 
+hostname = socket.gethostname().split(".")[0]
 
 @pytest.mark.asyncio
 async def test_hello_post():
@@ -11,7 +13,7 @@ async def test_hello_post():
 		response = await ac.post("/hn")
 		response_data = response.json()
 		assert response.status_code == 200
-		assert response_data.get("hostname") == 'raton00\n'
+		assert response_data.get("hostname") == hostname
 
 
 @pytest.mark.asyncio
