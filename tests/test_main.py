@@ -1,6 +1,6 @@
 import pytest
 from httpx import AsyncClient
-import os
+import socket
 
 from fastapi_dev.main import app, get_hostname
 URL = "http://httpbin.org/uuid"
