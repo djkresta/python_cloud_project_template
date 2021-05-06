@@ -1,10 +1,10 @@
-name: CI to Docker Hub
+name: Test build push 
 on:
   push:
     branches: [ main ]
 jobs:
-  tests:
-    name: "Tests"
+  test:
+    name: "Test code and check lint"
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v2
@@ -12,14 +12,16 @@ jobs:
         with:
           python-version: '3.8'
           architecture: 'x64'
-      - name: "Install tox"
+      - name: Python Poetry Action
+        uses: abatilo/actions-poetry@v2.1.0
+      - name: Install dependencies
         run: |
           pip install tox
-      - name: "tox tests"
+      - name: "tests"
         run: |
           tox
   build:
-    needs: tests
+    needs: test
     runs-on: ubuntu-latest
     
     steps:
