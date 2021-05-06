@@ -15,7 +15,7 @@ class UrlResponse(BaseModel):
 
 
 def get_hostname():
-    s2_out = subprocess.check_output(["hostname"])
+    s2_out = subprocess.check_output(["hostname"]).decode().strip()
     return s2_out
 
 
