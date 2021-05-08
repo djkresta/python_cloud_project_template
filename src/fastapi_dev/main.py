@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import subprocess
 import httpx
-
+from mangum import Mangum
 app = FastAPI()
 
 
@@ -38,3 +38,5 @@ async def get_url_response(url: UrlResponse):
         return {"status": "ok"}
     else:
         return {"status": "bad"}
+
+handler = Mangum(app=app)
